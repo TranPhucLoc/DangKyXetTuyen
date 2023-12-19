@@ -2,8 +2,8 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
+  TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
 import Input from './InputText';
@@ -27,13 +27,16 @@ const App = () => {
   };
 
   return (
-    <SafeAreaProvider style={styles.main}> 
+    <SafeAreaProvider style={{flex: 1,}}>
       <Header/>
+      <View style={styles.main}>
       <Input
+      
         onChangeText={text => handleOnchange(text, 'email')}
         placeholder="Enter your email address"
       />
       <Input
+      
         onChangeText={text => handleOnchange(text, 'password')}
         placeholder="Enter your password"
         secureTextEntry={true}
@@ -43,6 +46,7 @@ const App = () => {
         onPress={() => submitHandler()}>
         <Text style={{}}>Submit</Text>
       </TouchableOpacity>
+      </View> 
     </SafeAreaProvider>
   );
 };
@@ -54,9 +58,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ffd082',
   },
-  // header: {
-  //   position: 'absolute',
-  // },
+  
+  text: {
+    alignItems: 'center',
+  },
   // textContainer: {
   //   marginVertical: 5,
   //   backgroundColor: 'white',
@@ -74,9 +79,7 @@ const styles = StyleSheet.create({
   //   borderWidth: 2,
   //   borderColor: '#f5a623',
   // },
-  // text: {
-  //   color: 'black',
-  // },
+  
   buttonContainer: {
     display: 'flex',
     justifyContent: 'center',
