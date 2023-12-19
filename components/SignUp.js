@@ -2,8 +2,8 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
+  TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
 import Input from './InputText';
@@ -27,13 +27,16 @@ const App = () => {
   };
 
   return (
-    <SafeAreaProvider style={styles.main}> 
+    <SafeAreaProvider style={{flex: 1,}}>
       <Header/>
+      <View style={styles.main}>
       <Input
+      style={{height: 50,}}
         onChangeText={text => handleOnchange(text, 'email')}
         placeholder="Enter your email address"
       />
       <Input
+      style={{height: 50,}}
         onChangeText={text => handleOnchange(text, 'password')}
         placeholder="Enter your password"
         secureTextEntry={true}
@@ -41,8 +44,19 @@ const App = () => {
       <TouchableOpacity
         style={styles.buttonContainer}
         onPress={() => submitHandler()}>
-        <Text style={{}}>Submit</Text>
+        <Text style={{color: 'white'}}>Submit</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.buttonContainer}
+        onPress={() => submitHandler()}>
+        <Text style={{color: 'white'}}>Forgot password</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.buttonContainer}
+        onPress={() => submitHandler()}>
+        <Text style={{color: 'white'}}>New account</Text>
+      </TouchableOpacity>
+      </View> 
     </SafeAreaProvider>
   );
 };
@@ -52,38 +66,20 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffd082',
+    backgroundColor: '#ffffff',
   },
-  // header: {
-  //   position: 'absolute',
-  // },
-  // textContainer: {
-  //   marginVertical: 5,
-  //   backgroundColor: 'white',
-  //   width: '80%',
-  //   borderRadius: 10,
-  //   paddingLeft: 10,
-  //   shadowColor: '#000',
-  //   shadowOffset: {
-  //     width: 0,
-  //     height: 2,
-  //   },
-  //   shadowOpacity: 0.25,
-  //   shadowRadius: 3.84,
-  //   elevation: 5,
-  //   borderWidth: 2,
-  //   borderColor: '#f5a623',
-  // },
-  // text: {
-  //   color: 'black',
-  // },
+  
+  text: {
+    alignItems: 'center',
+  },
+   
   buttonContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     width: '80%',
-    backgroundColor: '#f5a623',
-    height: 60,
+    backgroundColor: 'blue',
+    height: 40,
     marginTop: 20,
     borderRadius: 10,
     shadowColor: '#000',

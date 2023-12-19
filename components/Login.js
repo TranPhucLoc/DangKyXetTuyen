@@ -31,12 +31,12 @@ const App = () => {
       <Header/>
       <View style={styles.main}>
       <Input
-      
+      style={{height: 50,}}
         onChangeText={text => handleOnchange(text, 'email')}
         placeholder="Enter your email address"
       />
       <Input
-      
+      style={{height: 50,}}
         onChangeText={text => handleOnchange(text, 'password')}
         placeholder="Enter your password"
         secureTextEntry={true}
@@ -44,7 +44,17 @@ const App = () => {
       <TouchableOpacity
         style={styles.buttonContainer}
         onPress={() => submitHandler()}>
-        <Text style={{}}>Submit</Text>
+        <Text style={{color: 'white'}}>Log in</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.buttonContainer}
+        onPress={() => submitHandler()}>
+        <Text style={{color: 'white'}}>Forgot password</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.buttonContainer}
+        onPress={() => submitHandler()}>
+        <Text style={{color: 'white'}}>New account</Text>
       </TouchableOpacity>
       </View> 
     </SafeAreaProvider>
@@ -56,37 +66,20 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffd082',
+    backgroundColor: '#ffffff',
   },
   
   text: {
     alignItems: 'center',
   },
-  // textContainer: {
-  //   marginVertical: 5,
-  //   backgroundColor: 'white',
-  //   width: '80%',
-  //   borderRadius: 10,
-  //   paddingLeft: 10,
-  //   shadowColor: '#000',
-  //   shadowOffset: {
-  //     width: 0,
-  //     height: 2,
-  //   },
-  //   shadowOpacity: 0.25,
-  //   shadowRadius: 3.84,
-  //   elevation: 5,
-  //   borderWidth: 2,
-  //   borderColor: '#f5a623',
-  // },
-  
+   
   buttonContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     width: '80%',
-    backgroundColor: '#f5a623',
-    height: 60,
+    backgroundColor: 'blue',
+    height: 40,
     marginTop: 20,
     borderRadius: 10,
     shadowColor: '#000',
