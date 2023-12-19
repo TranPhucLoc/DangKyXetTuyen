@@ -1,49 +1,103 @@
-import * as React from 'react';
-import { Appbar, StyleSheet, Button, Text, View  } from 'react-native-paper';
-const SignUp = () => {
-    const [text, onChangeText] = React.useState('');
-    return (
-        <View style={styles.header}>   
-        <Appbar.Header>
-            <Appbar.BackAction onPress={() => {}} />
-            <Appbar.Content title="Title" />
-        </Appbar.Header>
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, {useState} from 'react';
+import { Appbar } from 'react-native-paper';
+import Input from './InputText';
 
-        <Text>LOG IN</Text>
-        <Text>Enter Gmail</Text>
-        <TextInput
-                style={styles.input}
-                onChangeText={onChangeText}
-                value={text}
-            />
-        <Text>Enter Password</Text>
-        <TextInput
-                style={styles.input}
-                onChangeText={onChangeText}
-                value={text}
-            />
-        <Button icon="camera" mode="elevated" onPress={() => console.log('Please Wait')}>
-            Log In
-        </Button>
-        </View>
+const App = () => {
+  const initialState = {    
+    email: '',
+    password: '',
+  };
 
+  const [inputs, setInputs] = useState(initialState);
 
-);
+  const handleOnchange = (text, input) => {
+    setInputs(prevState => ({...prevState, [input]: text}));
+  };
+
+  const submitHandler = () => {
+    console.log(inputs);
+  };
+
+  return (
+    <Appbar style={styles.bottom}>
+      <View style={styles.main}>
+        <Input
+          onChangeText={text => handleOnchange(text, 'email')}
+          placeholder="Enter your email address"
+        />
+        <Input
+          onChangeText={text => handleOnchange(text, 'password')}
+          placeholder="Enter your password"
+          secureTextEntry={true}
+        />
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={() => submitHandler()}>
+          <Text style={{}}>Submit</Text>
+        </TouchableOpacity>
+      </View>
+    </Appbar>
+  );
 };
 
 const styles = StyleSheet.create({
-    header: {
-      flex: 1,
-      flexDirection: 'column',
-      alignSelf: 'stretch',
-      paddingTop: 20,
-      paddingBottom: 5,
-      backgroundColor: '#f3f3f3'
+  main: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffd082',
+  },
+  bottom: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  textContainer: {
+    marginVertical: 5,
+    backgroundColor: 'white',
+    width: '80%',
+    borderRadius: 10,
+    paddingLeft: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
     },
-    header_text: {
-      fontWeight: 'bold',
-      fontSize: 17,
-      textAlign: 'center'
-    }
-  });
-export default SignUp;
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    borderWidth: 2,
+    borderColor: '#f5a623',
+  },
+  text: {
+    color: 'black',
+  },
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '80%',
+    backgroundColor: '#f5a623',
+    height: 60,
+    marginTop: 20,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+});
+
+export default App;

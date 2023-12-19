@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import Input from './InputText';
+import Header from './Header';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const App = () => {
   const initialState = {    
@@ -25,7 +27,8 @@ const App = () => {
   };
 
   return (
-    <View style={styles.main}>
+    <SafeAreaProvider style={styles.main}> 
+      <Header/>
       <Input
         onChangeText={text => handleOnchange(text, 'email')}
         placeholder="Enter your email address"
@@ -40,7 +43,7 @@ const App = () => {
         onPress={() => submitHandler()}>
         <Text style={{}}>Submit</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaProvider>
   );
 };
 
@@ -51,26 +54,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ffd082',
   },
-  textContainer: {
-    marginVertical: 5,
-    backgroundColor: 'white',
-    width: '80%',
-    borderRadius: 10,
-    paddingLeft: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    borderWidth: 2,
-    borderColor: '#f5a623',
-  },
-  text: {
-    color: 'black',
-  },
+  // header: {
+  //   position: 'absolute',
+  // },
+  // textContainer: {
+  //   marginVertical: 5,
+  //   backgroundColor: 'white',
+  //   width: '80%',
+  //   borderRadius: 10,
+  //   paddingLeft: 10,
+  //   shadowColor: '#000',
+  //   shadowOffset: {
+  //     width: 0,
+  //     height: 2,
+  //   },
+  //   shadowOpacity: 0.25,
+  //   shadowRadius: 3.84,
+  //   elevation: 5,
+  //   borderWidth: 2,
+  //   borderColor: '#f5a623',
+  // },
+  // text: {
+  //   color: 'black',
+  // },
   buttonContainer: {
     display: 'flex',
     justifyContent: 'center',
